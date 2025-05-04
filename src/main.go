@@ -10,34 +10,38 @@ import (
 )
 
 func main() {
-	info := getSysInfo()
+	info, err := getSysInfo()
+	if err != nil {
+		fmt.Println("Error getting system info:", err)
+		return
+	}
 	fmt.Printf("%+v\n", info)
 }
 
-// 시스템 정보를 가져오는 함수
-func getSysInfo() *SysInfo {
+// 시스템정보를 가져오는 함수
+func getSysInfo() (*SysInfo, error) {
 	hostStat, err := host.Info()
 	if err != nil {
 		fmt.Println("Error getting host info:", err)
-		return &SysInfo{}
+		return &SysInfo{}, err
 	}
 
 	cpuStat, err := cpu.Info()
 	if err != nil {
 		fmt.Println("Error getting cpu info:", err)
-		return &SysInfo{}
+		return &SysInfo{}, err
 	}
 
 	vmStat, err := mem.VirtualMemory()
 	if err != nil {
 		fmt.Println("Error getting memory info:", err)
-		return &SysInfo{}
+		return &SysInfo{}, err
 	}
 
 	diskStat, err := disk.Usage("//")
 	if err != nil {
 		fmt.Println("Error getting disk info:", err)
-		return &SysInfo{}
+		return &SysInfo{}, err
 	}
 
 	info := new(SysInfo)
@@ -48,14 +52,14 @@ func getSysInfo() *SysInfo {
 	info.RAM = vmStat.Total / 1024 / 1024
 	info.Disk = diskStat.Total / 1024 / 1024
 
-	return info
+	return info, nil
 }
 
 // 시스템정보 구조체
 type SysInfo struct {
-	Hostname string `bson:"hostname"`
-	Platform string `bson:"platform"`
-	CPU      string `bson:"cpu"`
-	RAM      uint64 `bson:"ram"`
-	Disk     uint64 `bson:"disk"`
+	Hostname string
+	Platform string
+	CPU      string
+	RAM      uint64
+	Disk     uint64
 }
