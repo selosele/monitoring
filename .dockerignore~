@@ -1,5 +1,0 @@
-.devcontainer
-.vscode
-__debug_bin*
-.gitignore
-Dockerfile.bak
