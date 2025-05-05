@@ -24,7 +24,7 @@
 	},
 	"forwardPorts": [8080, 2345],
 	"mounts": [
-		"source=${localWorkspaceFolder}/src,target=/app,type=bind"
+		"source=${localWorkspaceFolder},target=/app,type=bind"
 	],
 	"postCreateCommand": "go mod tidy",
 	"remoteUser": "root"

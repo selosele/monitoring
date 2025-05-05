@@ -4,7 +4,7 @@ FROM golang:1.24
 RUN go install github.com/go-delve/delve/cmd/dlv@latest
 
 WORKDIR /app
-COPY src/ ./
+COPY . .
 RUN go mod download
 
 # 디버깅 포트 2345 열기
