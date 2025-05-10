@@ -32,6 +32,12 @@ func GetInfo() types.ProcessList {
 			continue
 		}
 
+		numThreads, err := proc.NumThreads()
+		if err != nil {
+			fmt.Println("Error getting process numThreads:", err)
+			continue
+		}
+
 		createTimeInt, err := proc.CreateTime()
 		if err != nil {
 			fmt.Println("Error getting process createTime:", err)
@@ -50,6 +56,7 @@ func GetInfo() types.ProcessList {
 			Pid:        proc.Pid,
 			Name:       name,
 			Status:     status,
+			NumThreads: numThreads,
 			CreateTime: createTime,
 		})
 	}
