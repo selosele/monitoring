@@ -2,14 +2,16 @@ package main
 
 import (
 	"fmt"
-	"monitoring/internal/sysinfo/service"
+	processinfoService "monitoring/internal/processinfo/service"
+	sysinfoService "monitoring/internal/sysinfo/service"
 )
 
 func main() {
-	info, err := service.GetSysInfo()
-	if err != nil {
-		fmt.Println("Error getting system info:", err)
-		return
-	}
-	fmt.Printf("%+v\n", info)
+	sysInfo := sysinfoService.GetSysInfo()
+	sysInfo.Print()
+
+	fmt.Println("===============================================================")
+
+	processInfo := processinfoService.GetProcessInfo()
+	processInfo.Print()
 }
