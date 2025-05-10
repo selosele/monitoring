@@ -20,7 +20,7 @@ type ProcessList []*ProcessInfo
 func (p ProcessList) Print() {
 	fmt.Println("\n■ PROCESS INFO:")
 	fmt.Println("pid name status createTime")
-	for _, proc := range p {
-		fmt.Printf("%+v %+v %+v %+v\n", proc.Pid, proc.Name, proc.Status, proc.CreateTime)
+	for _, i := range p {
+		fmt.Printf("%+v %+v %+v %+v\n", i.Pid, i.Name, i.Status, i.CreateTime)
 	}
 }
