@@ -13,7 +13,7 @@ import (
 )
 
 // 시스템정보를 가져오는 함수
-func GetSysInfo() *types.SysInfo {
+func GetInfo() *types.SysInfo {
 	hostStat, err := host.Info()
 	if err != nil {
 		fmt.Println("Error getting host info:", err)

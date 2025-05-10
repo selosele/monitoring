@@ -17,7 +17,7 @@ type SysInfo struct {
 
 // 시스템 정보를 출력하는 함수
 func (s SysInfo) Print() {
-	fmt.Println("■ SYSTEM INFO:")
+	fmt.Println("\n■ SYSTEM INFO:")
 	fmt.Printf("> hostname: %+v\n", s.Hostname)
 	fmt.Printf("> platform: %+v\n", s.Platform)
 	fmt.Printf("> cpu: %+v\n", s.CPU)

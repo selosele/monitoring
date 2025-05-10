@@ -10,7 +10,7 @@ import (
 )
 
 // 프로세스 정보를 가져오는 함수
-func GetProcessInfo() types.ProcessList {
+func GetInfo() types.ProcessList {
 	processes, err := process.Processes()
 	if err != nil {
 		fmt.Println("Error getting process info:", err)

@@ -18,7 +18,7 @@ type ProcessList []*ProcessInfo
 
 // 프로세스 정보를 출력하는 함수
 func (p ProcessList) Print() {
-	fmt.Println("■ PROCESS INFO:")
+	fmt.Println("\n■ PROCESS INFO:")
 	fmt.Println("pid name status createTime")
 	for _, proc := range p {
 		fmt.Printf("%+v %+v %+v %+v\n", proc.Pid, proc.Name, proc.Status, proc.CreateTime)
