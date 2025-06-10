@@ -40,14 +40,5 @@ sudo systemctl start monitoring
 
 ## 실시간 로그 확인
 ```
-journalctl -u monitoring -f
+watch -n 1 "journalctl -u monitoring -n 1 -f --output=cat --no-pager"
 ```
-
-## 로그를 실시간으로 파일 생성
-```
-journalctl -u monitoring -f >> [원하는 경로 + 파일명]
-```
-
-
-
-
