@@ -13,8 +13,8 @@
 
 ```
 cd /etc/systemd/system
-sudo touch monitoring.service
-sudo vi monitoring.service
+touch monitoring.service
+vi monitoring.service
 ```
 
 다음 내용 입력 후 :wq
@@ -33,9 +33,9 @@ WantedBy=multi-user.target
 ```
 
 ```
-sudo systemctl daemon-reexec
-sudo systemctl enable monitoring
-sudo systemctl start monitoring
+systemctl daemon-reexec
+systemctl enable monitoring
+systemctl start monitoring
 ```
 
 ## 실시간 로그 확인
