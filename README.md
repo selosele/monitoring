@@ -6,19 +6,19 @@
 
 ## 빌드
 
-- 리눅스 타겟 빌드: main.go가 위치한 디렉터리에서 `go build` 실행
-- 윈도우 타겟 빌드: main.go가 위치한 디렉터리에서 `GOOS=windows GOARCH=amd64 go build` 실행
+- 리눅스 타겟 빌드: main.go가 위치한 디렉터리에서 ```go build``` 실행
+- 윈도우 타겟 빌드: main.go가 위치한 디렉터리에서 ```GOOS=windows GOARCH=amd64 go build``` 실행
 
 ## 리눅스 systemd 서비스로 등록
 
-```
+```bash
 cd /etc/systemd/system
 touch monitoring.service
 vi monitoring.service
 ```
 
 다음 내용 입력 후 :wq
-```
+```bash
 [Unit]
 Description=Monitoring App
 After=network.target
@@ -32,13 +32,13 @@ RestartSec=3
 WantedBy=multi-user.target
 ```
 
-```
+```bash
 systemctl daemon-reexec
 systemctl enable monitoring
 systemctl start monitoring
 ```
 
 ## 실시간 로그 확인
-```
+```bash
 watch -n 1 "journalctl -u monitoring -n 1 -f --output=cat --no-pager"
 ```
